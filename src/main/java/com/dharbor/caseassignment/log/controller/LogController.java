@@ -48,8 +48,11 @@ public class LogController {
 	    	  response.flushBuffer();
 	      }
 	      catch(IOException e) {
-	    	  e.printStackTrace();
-	    	  
+	    	  e.printStackTrace();  
+	      }
+	      finally{
+	    	  File file = new File(OUTPUT_ZIP_FILE);
+	    	  file.delete();
 	      }
 	}
 	
