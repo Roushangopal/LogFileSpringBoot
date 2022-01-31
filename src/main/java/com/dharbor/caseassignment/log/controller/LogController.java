@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class LogController {
-	String folderPath="D:/logs";
+	private static final String folderPath="D:/logs";
 	private static final String OUTPUT_ZIP_FILE = "D:/logs/log.zip";
 	
 	@RequestMapping("/logs")
@@ -59,7 +59,6 @@ public class LogController {
     	 for (File filename : files) {
 //    		 System.out.println("File: "+ filename.getName());
     		 String fname = filename.getName();
-    		 System.out.println(fname);
     		 String time = GettingLastmodifiedTime(folderPath+"/"+fname);
     		 SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
     		 int result = (formatter.parse(date)).compareTo(formatter.parse(time));
@@ -67,7 +66,6 @@ public class LogController {
     			 fileList.add(fname);
     		 }
     	 }
-    	 System.out.println(fileList);
     	return fileList;
     }
     
