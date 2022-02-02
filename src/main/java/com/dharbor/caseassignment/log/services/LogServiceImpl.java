@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class LogServiceImpl implements LogService {
 
-	private static final String folderPath="D:/logs";
+	private static final String folderPath="D:/ogs";
 	private static final String OUTPUT_ZIP_FILE = "D:/logs/log.zip";
 	
 	@Override
@@ -25,8 +25,11 @@ public class LogServiceImpl implements LogService {
 		// TODO Auto-generated method stub
     	List<String> fileList= new ArrayList<String>();
     	File[] files = new File(folderPath).listFiles();
+    	if(files == null) {
+    		return fileList;
+    	} else {
     	 for (File filename : files) {
-//    		 System.out.println("File: "+ filename.getName());
+    		 //System.out.println("File: "+ filename.getName());
     		 String fname = filename.getName();
     		 String time = GettingLastmodifiedTime(folderPath+"/"+fname);
     		 SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
@@ -41,6 +44,7 @@ public class LogServiceImpl implements LogService {
 			}
     	 }
     	return fileList;
+    	}
 	}
 	
 	
@@ -56,7 +60,7 @@ public class LogServiceImpl implements LogService {
 
 
 	@Override
-	public void CreateZip(List<String> fileName) {
+	public void createZip(List<String> fileName) {
 		// TODO Auto-generated method stub
 		try { 
             // create byte buffer

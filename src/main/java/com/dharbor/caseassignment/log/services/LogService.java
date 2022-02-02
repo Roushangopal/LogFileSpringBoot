@@ -6,5 +6,5 @@ public interface LogService {
 	
 	public List<String> getFileName(String date);
 	
-	public void CreateZip(List<String> fileName);
+	public void createZip(List<String> fileName);
 }

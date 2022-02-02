@@ -30,10 +30,10 @@ public class logController {
 		  List<String> fileNames = logService.getFileName(date);
 		  if(fileNames.isEmpty()) {
 			    response.setHeader("Custom-Header", "foo");
-			    response.setStatus(200);
+			    response.setStatus(404);
 			    response.getWriter().println("No Files Available For the specified date");
 		  } else {
-			  logService.CreateZip(fileNames);
+			  logService.createZip(fileNames);
 			  String fileName = OUTPUT_ZIP_FILE;
 			  response.setContentType("application/zip");
 		      response.setHeader("Content-Disposition", "attachment; filename=" +fileName);
